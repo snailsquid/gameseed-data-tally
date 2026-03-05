@@ -47,7 +47,7 @@ Ada dua skrip utama:
 ## 2. Struktur Folder
 
 ```
-GAMESEED/
+gameseed-data-tally/
 │
 ├── split.py              ← Skrip pemisah (jalankan lebih dulu jika perlu)
 ├── process.py            ← Skrip pemrosesan utama
@@ -75,9 +75,17 @@ GAMESEED/
 
 ## 3. Persiapan Awal
 
-### Buka terminal di folder GAMESEED
+### Download kode dan extract
 
-Di Windows: klik kanan di dalam folder GAMESEED → **"Open in Terminal"** atau **"Open PowerShell window here"**.
+Buka Releases terbaru lalu download `Source code.zip` kemudian extract
+
+### Masukkan source
+
+Tim internal telah diberikan data tahun 2025. Masukkan semua file dari source sebagaimana struktur telah sediakan
+
+### Buka terminal di folder gameseed-data-tally
+
+Di Windows: klik kanan di dalam folder gameseed-data-tally → **"Open in Terminal"** atau **"Open PowerShell window here"**.
 
 Di Mac/Linux: buka Terminal, lalu ketik:
 ```bash

@@ -1,8 +1,8 @@
 # Source data (raw Tally exports)
-sources/
+sources/*
 
 # Pipeline output
-output/
+output/*
 
 # Python cache
 __pycache__/
