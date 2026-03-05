@@ -1,6 +1,8 @@
 # GAMESEED Data Processing
 
-Converts raw Tally form exports into clean, year-accumulating output CSVs.
+Converts raw Tally form exports into clean, year-accumulating output CSVs.  
+---
+## [🇮🇩 Indonesian Guide](https://github.com/snailsquid/gameseed-registration-tally/blob/90baab2e26837e0b43a8770324d9393a97611cce/PANDUAN.md)
 
 ## Directory structure
 
