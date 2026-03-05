@@ -1,0 +1,104 @@
+# GAMESEED 2025 source configuration
+#
+# mode: "separate" = two source files (student{YEAR}.csv + public{YEAR}.csv)
+#       "combined" = one file (gameseed{YEAR}.csv) that needs splitting first via split.py
+mode: separate
+
+# --- Split config ---
+# Only used when mode is "combined".
+# Defines which column and values distinguish Student vs Public rows.
+split:
+  category_column: "Kategori"
+  student_value: "Student"
+  public_value: "Public"
+
+# --- Top files ---
+# A list of source files that contribute to team.csv with a specific Kegiatan label.
+# Each entry:
+#   file:     filename inside sources/ (just the filename, not the full path)
+#   kegiatan: value written to the Kegiatan column in team.csv
+# Any number of entries can be added. Files that don't exist produce a [WARN] and are skipped.
+tops:
+  - file: "igdx_2025.csv"
+    kegiatan: "IGDX"
+  - file: "incubation_2025.csv"
+    kegiatan: "Incubation"
+
+# --- Column mappings ---
+# Each entry maps an internal canonical name to the actual column name in the CSV.
+#   source:   exact column header string in the CSV (including any quirks like trailing spaces or \n)
+#   required: true  → script aborts if column is missing from the source file
+#             false → column is filled with empty/NaN and processing continues with a warning
+
+# Columns present in BOTH student and public source files.
+# If a section-specific override exists (under "student:" or "public:"), it takes precedence.
+shared:
+  nama_lengkap:
+    source: "Nama Lengkap"
+    required: true
+  email:
+    source: "Email "          # trailing space from Tally export
+    required: true
+  discord:
+    source: "Discord Username"
+    required: false
+  whatsapp:
+    source: "Nomor Whatsapp"
+    required: false
+  provinsi:
+    source: "Asal Provinsi"
+    required: false
+  kota:
+    source: "Asal Kota"
+    required: false
+  gender:
+    source: "Jenis Kelamin"
+    required: false
+  submitted_at:
+    source: "Submitted at"
+    required: true
+  pengalaman:
+    source: "Pengalamanmu dalam Game Development"
+    required: false
+
+# Columns specific to the student source file.
+student:
+  nama_tim:
+    source: "Nama Tim"
+    required: true
+  bukti_konten:
+    source: "Upload Bukti Konten GAMESEED 2025"
+    required: false
+  status_studi:
+    source: "Status Studi"
+    required: false
+  institusi:
+    source: "Institusi (boleh lebih dari 1)"
+    required: false
+  nomor_id:
+    source: "Nomor Identifikasi di Institusi Pendidikan"
+    required: false
+  jurusan:
+    source: "Jurusan"
+    required: false
+  bukti_ktm:
+    source: "Bukti Foto Kartu Tanda Mahasiswa / Kartu Pelajar"
+    required: false
+
+# Columns specific to the public source file.
+public:
+  nama_tim:
+    source: "Nama Tim\n"      # newline embedded in Tally export header
+    required: true
+  bukti_konten:
+    source: "Upload Bukti Post Konten GAMESEED 2025"
+    required: false
+  pekerjaan:
+    source: "Pekerjaan (boleh lebih dari 1)"
+    required: false
+  status_pekerjaan:
+    source: "Status Pekerjaan"
+    required: false
+  institusi:
+    source: "Institusi (boleh lebih dari 1)"
+    required: false
